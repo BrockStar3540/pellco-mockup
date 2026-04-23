@@ -216,7 +216,7 @@
   .float-1{width:52%;aspect-ratio:4/3;top:0;right:12%;transform:rotate(-3deg);z-index:2}
   .float-1::after{content:"Concrete · Mt. Vernon"}
   .float-2{width:46%;aspect-ratio:1/1;bottom:8%;right:0;transform:rotate(4deg);z-index:3}
-  .float-2::after{content:""}
+  .float-2::after{content:"Site · Snohomish Co."}
   .float-3{width:38%;aspect-ratio:3/4;bottom:0;left:0;transform:rotate(-6deg);z-index:1}
   .float-3::after{content:"Utilities · Live St."}
   .float:hover{transform:translateY(-6px) rotate(0)}
@@ -563,7 +563,7 @@
     /* HERO FLOATS — show as inline grid of thumbs on mobile */
     .hero-floats{display:grid!important;position:static;width:100%;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:32px;pointer-events:auto}
     .hero-floats .float{position:static!important;width:100%!important;aspect-ratio:3/4!important;transform:none!important;border-radius:4px}
-    .hero-floats .float::after{font-size:8px;letter-spacing:.18em;padding:3px 6px;top:6px;left:6px}
+    .hero-floats .float::after{display:none}
 
     /* OVERLAP BAND — kill the overlap on mobile, stack cleanly */
     .overlap{margin-top:0;margin-bottom:0;padding:40px 0}
