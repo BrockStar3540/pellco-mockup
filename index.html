@@ -54,7 +54,8 @@
   ::selection{background:var(--accent);color:#fff}
   .container{max-width:1280px;margin:0 auto;padding:0 32px}
   /* desktop adds gutters for fixed side rails */
-  @media (min-width:1180px){ body{padding-left:72px;padding-right:72px} }
+  @media (min-width:1100px){ body{padding-left:60px;padding-right:60px} }
+  @media (min-width:1500px){ body{padding-left:72px;padding-right:72px} }
 
   /* ======== LEFT RAIL ======== */
   .rail-left{position:fixed;top:0;bottom:0;left:0;width:72px;z-index:80;background:rgba(8,18,32,.7);backdrop-filter:blur(16px);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:28px 0;box-shadow:inset -1px 0 0 rgba(255,255,255,.04)}
@@ -78,7 +79,9 @@
   .rail-right .vphone::before{content:"☎ ";color:var(--accent)}
   .rail-right .backtop{margin-top:auto;width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--body);cursor:pointer;transition:all .25s}
   .rail-right .backtop:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 16px rgba(243,112,33,.3)}
-  @media (max-width:1179px){ .rail-left,.rail-right{display:none} }
+  .rail-left{width:60px} .rail-right{width:60px}
+  @media (min-width:1500px){ .rail-left{width:72px} .rail-right{width:72px} }
+  @media (max-width:1099px){ .rail-left,.rail-right{display:none} }
   h1,h2,h3,h4,h5,h6,.display{font-family:'Oswald',sans-serif;color:var(--white);letter-spacing:.005em;line-height:1.02;text-transform:uppercase;font-weight:600}
 
   /* ======== BUTTONS ======== */
@@ -112,16 +115,19 @@
   /* ======== NAV ======== */
   header.nav{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(12,26,46,.94) 0%,rgba(8,18,32,.9) 100%);backdrop-filter:blur(22px);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 10px 40px rgba(0,0,0,.4)}
   header.nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(243,112,33,.5) 30%,rgba(31,95,212,.5) 70%,transparent 100%)}
-  .nav-inner{display:flex;align-items:center;gap:32px;height:90px}
-  .brand{display:flex;align-items:center;gap:14px;padding:4px}
-  .brand img{height:58px;width:auto;filter:drop-shadow(0 4px 12px rgba(79,143,255,.2))}
-  .nav-links{display:flex;gap:36px;margin-left:28px;flex:1}
-  .nav-links a{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--body);transition:color .2s}
+  .nav-inner{display:flex;align-items:center;gap:24px;height:78px;flex-wrap:nowrap}
+  .brand{display:flex;align-items:center;gap:14px;padding:4px;flex-shrink:0}
+  .brand img{height:44px;width:auto;filter:drop-shadow(0 4px 12px rgba(79,143,255,.2))}
+  .nav-links{display:flex;gap:24px;margin-left:16px;flex:1;min-width:0}
+  .nav-links a{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--body);transition:color .2s;white-space:nowrap}
   .nav-links a:hover{color:var(--accent)}
-  .nav-cta{display:flex;align-items:center;gap:20px}
-  .phone-block{text-align:right;line-height:1.1}
-  .phone-block .lbl{font-size:10px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;font-weight:700}
-  .phone-block .num{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--white);letter-spacing:.01em}
+  .nav-cta{display:flex;align-items:center;gap:16px;flex-shrink:0}
+  .phone-block{text-align:right;line-height:1.1;white-space:nowrap}
+  .phone-block .lbl{font-size:9px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;font-weight:700}
+  .phone-block .num{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--white);letter-spacing:.005em;white-space:nowrap}
+  .nav-cta .btn{white-space:nowrap;padding:13px 22px;font-size:12px;letter-spacing:.2em}
+  @media (min-width:1500px){ .nav-inner{height:86px;gap:32px} .nav-links{gap:30px} .brand img{height:50px} .phone-block .num{font-size:26px} }
+  @media (max-width:1240px){ .nav-links{gap:18px} .nav-links a{font-size:11px} .phone-block{display:none} }
 
   /* ======== HERO ======== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--d1)}
@@ -139,10 +145,9 @@
   .hero-kicker{display:flex;align-items:center;gap:16px;margin-bottom:36px}
   .hero-kicker .rule{height:2px;width:64px;background:var(--accent)}
   .hero-kicker span{font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--white)}
-  h1.hero-title{font-size:clamp(64px,10vw,160px);font-weight:700;max-width:1100px;margin-bottom:24px;letter-spacing:-.015em;line-height:.86;color:var(--white);position:relative;background:linear-gradient(180deg,#ffffff 0%,#b9c9e0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 0 rgba(0,0,0,.25),0 8px 32px rgba(0,0,0,.45)}
+  h1.hero-title{font-size:clamp(48px,7.5vw,112px);font-weight:700;max-width:900px;margin-bottom:24px;letter-spacing:-.015em;line-height:.9;color:var(--white);position:relative;background:linear-gradient(180deg,#ffffff 0%,#b9c9e0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 0 rgba(0,0,0,.25),0 8px 32px rgba(0,0,0,.45);word-wrap:break-word;overflow-wrap:break-word}
   h1.hero-title em{font-style:normal;position:relative;background:linear-gradient(180deg,#ffb77a 0%,var(--accent) 55%,#c94e0f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
   h1.hero-title em::after{content:"";position:absolute;left:0;right:8%;bottom:6px;height:5px;background:var(--accent);opacity:.45;box-shadow:0 0 24px rgba(243,112,33,.7);-webkit-text-fill-color:initial}
-  h1.hero-title em::before{content:attr(data-stroke);position:absolute;left:0;top:0;color:transparent;-webkit-text-stroke:1px rgba(243,112,33,.3);-webkit-text-fill-color:transparent;transform:translate(6px,6px);z-index:-1}
   h1.hero-title .small{display:block;font-size:.5em;font-weight:500;color:#e8edf4;margin-top:18px;letter-spacing:.01em;-webkit-text-fill-color:#e8edf4;background:none;text-shadow:0 2px 12px rgba(0,0,0,.6)}
   .hero p.lead{font-size:19px;max-width:580px;color:var(--body);margin-bottom:44px;line-height:1.7}
   .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
@@ -159,12 +164,12 @@
   .float-3{width:38%;aspect-ratio:3/4;bottom:0;left:0;transform:rotate(-6deg);z-index:1}
   .float-3::after{content:"Utilities · Live St."}
   .float:hover{transform:translateY(-6px) rotate(0)}
-  /* floats hidden on narrow screens where hero is text-first */
-  @media (max-width:1280px){ .hero-floats{display:none} }
+  /* floats hidden on narrow screens */
+  @media (max-width:1199px){ .hero-floats{display:none} }
 
   /* hero content wrapper to constrain text under floats */
-  .hero-text{max-width:58%;position:relative;z-index:4}
-  @media (max-width:1280px){ .hero-text{max-width:100%} }
+  .hero-text{max-width:56%;position:relative;z-index:4}
+  @media (max-width:1199px){ .hero-text{max-width:100%} }
   /* stats row — at bottom of hero, bigger, stronger */
   /* ======== OVERLAP BAND — floating composite below hero ======== */
   .overlap{position:relative;z-index:5;margin-top:-140px;margin-bottom:-80px;padding:0 0}
