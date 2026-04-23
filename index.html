@@ -130,6 +130,27 @@
   @media (min-width:1500px){ .nav-inner{height:86px;gap:32px} .nav-links{gap:30px} .brand img{height:50px} .phone-block .num{font-size:26px} }
   @media (max-width:1240px){ .nav-links{gap:18px} .nav-links a{font-size:11px} .phone-block{display:none} }
 
+  /* ======== HAMBURGER ======== */
+  .hamburger{display:none;width:44px;height:44px;border:1px solid var(--line-2);background:rgba(255,255,255,.04);border-radius:3px;cursor:pointer;padding:0;align-items:center;justify-content:center;flex-direction:column;gap:5px;flex-shrink:0}
+  .hamburger span{display:block;width:20px;height:2px;background:var(--white);transition:transform .25s,opacity .2s}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{position:fixed;inset:0;z-index:60;background:rgba(5,8,15,.98);backdrop-filter:blur(20px);display:none;flex-direction:column;padding:100px 28px 40px;overflow-y:auto}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{display:block;font-family:'Oswald',sans-serif;font-size:24px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);padding:18px 0;border-bottom:1px solid var(--line)}
+  .mobile-menu a:hover,.mobile-menu a:active{color:var(--accent)}
+  .mobile-menu .mm-phone{margin-top:32px;padding-top:24px;border-top:2px solid var(--accent)}
+  .mobile-menu .mm-phone .lbl{font-size:11px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:6px}
+  .mobile-menu .mm-phone .num{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--white)}
+  .mobile-menu .btn{margin-top:20px;justify-content:center}
+  @media (max-width:899px){
+    .hamburger{display:flex}
+    .nav-links{display:none}
+    .nav-cta .btn:not(.hamburger){display:none}
+    .nav-cta{gap:8px}
+  }
+
   /* ======== HERO ======== */
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--d1)}
   .hero-bg{position:absolute;inset:0;background-image:url('assets/fb-excavation-footings.jpg');background-size:cover;background-position:center;filter:saturate(.8) contrast(1.05);transform:scale(1.05)}
@@ -507,6 +528,150 @@
     .cta-left,form.bid{padding:64px 36px}
     h1.hero-title{font-size:64px}
   }
+
+  /* ======== MOBILE (≤760px) — focused pass ======== */
+  @media (max-width:760px){
+    .container{padding:0 20px}
+    section{padding:80px 0}
+    .tape{height:4px}
+
+    /* TOP STRIP — stack, reduce, allow wrap */
+    .topstrip{font-size:11px}
+    .topstrip .row{height:auto;flex-direction:column;align-items:flex-start;gap:6px;padding:10px 0}
+    .topstrip .left{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+    .topstrip .left span{margin-right:0;font-size:10.5px;line-height:1.4}
+    .topstrip .warn{font-size:10px;padding:3px 8px}
+    .topstrip .right{font-size:10.5px;opacity:.85}
+
+    /* NAV */
+    .nav-inner{height:64px;gap:12px}
+    .brand img{height:36px}
+
+    /* HERO */
+    .hero{min-height:auto}
+    .hero-inner{padding:32px 0 60px}
+    .hero-kicker{margin-bottom:18px;gap:10px}
+    .hero-kicker .rule{width:32px}
+    .hero-kicker span{font-size:10px;letter-spacing:.22em;white-space:normal}
+    h1.hero-title{font-size:clamp(38px,10vw,52px)!important;line-height:1;margin-bottom:14px;max-width:100%;word-wrap:break-word;overflow-wrap:break-word;hyphens:auto}
+    .hero-subtitle{font-size:14px;margin-top:14px;line-height:1.4}
+    .hero p.lead{font-size:15px;line-height:1.6;margin-bottom:28px}
+    .hero-ctas{gap:10px;flex-direction:column;align-items:stretch}
+    .hero-ctas .btn{justify-content:center;padding:16px 20px;font-size:12px;letter-spacing:.2em}
+    .hero-ctas .btn-xl{padding:18px 22px}
+
+    /* HERO FLOATS — show as inline grid of thumbs on mobile */
+    .hero-floats{display:grid!important;position:static;width:100%;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:32px;pointer-events:auto}
+    .hero-floats .float{position:static!important;width:100%!important;aspect-ratio:3/4!important;transform:none!important;border-radius:4px}
+    .hero-floats .float::after{font-size:8px;letter-spacing:.18em;padding:3px 6px;top:6px;left:6px}
+
+    /* OVERLAP BAND — kill the overlap on mobile, stack cleanly */
+    .overlap{margin-top:0;margin-bottom:0;padding:40px 0}
+    .overlap .container{gap:14px}
+    .ocard-feat .ocard-body{padding:20px 22px 24px}
+    .ocard-feat h4{font-size:22px}
+    .ocard-feat p{font-size:14px}
+    .ocard-stats{padding:24px}
+    .ocard-stats .stat-row .n{font-size:40px}
+    .ocard-recent{padding:20px}
+
+    /* TRUST */
+    .trust{padding:20px 0}
+    .trust-inner{grid-template-columns:1fr 1fr;gap:14px}
+    .trust-item{font-size:10.5px;letter-spacing:.1em;gap:8px}
+    .trust-item svg{width:16px;height:16px}
+
+    /* MARQUEE */
+    .marquee{padding:20px 0}
+    .marquee-item{font-size:30px;gap:40px}
+    .marquee-track{gap:40px}
+
+    /* SECTION HEADERS */
+    .chapter{gap:16px;margin-bottom:40px;flex-direction:column}
+    .chapter-num{font-size:120px!important;top:-30px;right:-10px}
+    .chapter h2{font-size:clamp(34px,8vw,48px)!important;margin-bottom:18px;line-height:1}
+    .chapter-tag{margin-bottom:16px}
+    .chapter-tag .idx{font-size:16px}
+    .chapter-tag .slash{width:28px}
+    .chapter-tag .lbl{font-size:10px;letter-spacing:.22em}
+    .chapter-lede{margin-top:0;justify-content:flex-start}
+    .chapter-lede p{padding-left:20px;font-size:14.5px;max-width:100%}
+
+    /* SERVICES */
+    .cap-row{padding:24px 0;gap:12px}
+    .cap-row:hover{padding-left:0}
+    .cap-row .idx{font-size:36px}
+    .cap-row h3{font-size:26px}
+    .cap-row p{font-size:14px}
+
+    /* IMAGE BAND */
+    .image-band{height:auto;min-height:360px;padding:60px 0}
+    .image-band .big{font-size:32px}
+    .image-band .sub{font-size:14px}
+    .callout{display:none}
+
+    /* PROJECTS */
+    .projects{grid-auto-rows:220px;gap:12px}
+    .project h4{font-size:22px}
+    .project .meta{left:18px;right:18px;bottom:18px}
+
+    /* WHY */
+    .why-grid{gap:32px}
+    .why-image .stat-badge{left:-12px;bottom:24px;padding:18px 24px}
+    .why-image .stat-badge .n{font-size:44px}
+    .why-image .stat-badge .l{font-size:10px}
+    .why .lead{font-size:15px}
+    .pull{font-size:20px;padding:16px 0 16px 20px;margin:32px 0}
+    .pillars{gap:24px;margin-top:32px}
+    .mega-n{font-size:200px!important;top:20px}
+
+    /* LEADER */
+    #leader .chapter-num{font-size:100px!important}
+    .leader-grid{gap:32px}
+    .leader-photo-wrap{max-width:100%}
+    .leader h2{font-size:36px!important}
+    .leader p{font-size:15px}
+    .leader .sig{font-size:18px;margin-top:24px}
+
+    /* FIELDNOTES */
+    .fieldnotes{padding:80px 0}
+    .fn-grid{gap:32px}
+    .fn-articles{grid-template-columns:1fr;gap:16px}
+
+    /* CREW BAND */
+    .crew-tile{aspect-ratio:16/11}
+    .crew-tile .cap{left:24px;right:24px;bottom:24px}
+    .crew-tile .cap h4{font-size:24px}
+    .crew-tile .cap p{font-size:13px}
+
+    /* TESTIMONIAL */
+    .tcard{padding:0 20px}
+    .tcard .quote-mark{font-size:90px}
+    .tcard blockquote{font-size:22px}
+
+    /* CTA — fix off-page */
+    .cta-grid{min-height:auto}
+    .cta-left{padding:56px 24px 40px}
+    .cta-left h2{font-size:36px!important;line-height:1.02}
+    .cta-left p{font-size:15px;margin-bottom:28px}
+    .cta-left .big-phone{font-size:36px}
+    form.bid{padding:40px 24px 48px;gap:16px}
+    form.bid h3{font-size:26px}
+    form.bid .row-2{grid-template-columns:1fr;gap:14px}
+    form.bid .btn{justify-content:center;padding:18px 20px}
+    form.bid .field input,form.bid .field select,form.bid .field textarea{font-size:15px;padding:13px 14px}
+
+    /* FOOTER — compact */
+    footer{padding:56px 0 24px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:28px 20px;margin-bottom:40px}
+    .foot-brand{grid-column:1 / -1;margin-bottom:8px}
+    .foot-brand img{height:56px;margin-bottom:16px}
+    .foot-brand p{font-size:13.5px;margin-bottom:16px}
+    .foot h6{font-size:12px;letter-spacing:.18em;margin-bottom:14px}
+    .foot li{margin-bottom:8px}
+    .foot a{font-size:13px}
+    .foot-bottom{font-size:11px;flex-direction:column;align-items:flex-start;gap:8px;padding-top:20px}
+  }
 </style>
 </head>
 <body>
@@ -575,9 +740,26 @@
         <div class="num">(425) 265-7211</div>
       </div>
       <a href="#contact" class="btn btn-primary arrow">Request a Bid</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Capabilities</a>
+  <a href="#projects">Projects</a>
+  <a href="#why">About</a>
+  <a href="#leader">Leadership</a>
+  <a href="#contact">Contact</a>
+  <div class="mm-phone">
+    <div class="lbl">Call Estimating</div>
+    <div class="num">(425) 265-7211</div>
+  </div>
+  <a href="#contact" class="btn btn-primary arrow">Request a Bid</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" style="padding:0">
@@ -1129,6 +1311,21 @@
 
 <!-- SCROLL PROGRESS + COUNT-UP -->
 <script>
+(function(){
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  const close = () => { btn.classList.remove('open'); menu.classList.remove('open'); btn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  const toggle = () => {
+    const open = !btn.classList.contains('open');
+    btn.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+  btn.addEventListener('click', toggle);
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+})();
 (function(){
   const bar = document.getElementById('scrollProgress');
   const onScroll = () => {
