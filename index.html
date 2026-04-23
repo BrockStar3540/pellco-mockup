@@ -62,7 +62,7 @@
   .rail-left{position:fixed;top:0;bottom:0;left:0;width:72px;z-index:80;background:rgba(8,18,32,.7);backdrop-filter:blur(16px);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:28px 0;box-shadow:inset -1px 0 0 rgba(255,255,255,.04)}
   .rail-left .logo-mini{width:44px;height:44px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(243,112,33,.45),inset 0 1px 0 rgba(255,255,255,.2);position:relative}
   .rail-left .logo-mini::after{content:"P";font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1}
-  .rail-left .vlabel{writing-mode:vertical-rl;transform:rotate(180deg);margin-top:auto;margin-bottom:24px;font-size:11px;letter-spacing:.32em;color:var(--body);text-transform:uppercase;font-weight:700;opacity:.8}
+  .rail-left .vlabel{writing-mode:vertical-rl;transform:rotate(180deg);margin-top:24px;margin-bottom:24px;font-size:10px;letter-spacing:.3em;color:var(--body);text-transform:uppercase;font-weight:700;opacity:.8;white-space:nowrap}
   .rail-left .vlabel span{color:var(--accent)}
   .rail-left .vnav{margin:auto 0;display:flex;flex-direction:column;gap:20px;align-items:center}
   .rail-left .vnav a{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18);transition:all .25s;position:relative}
@@ -146,9 +146,29 @@
   .hero-kicker{display:flex;align-items:center;gap:16px;margin-bottom:36px}
   .hero-kicker .rule{height:2px;width:64px;background:var(--accent)}
   .hero-kicker span{font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:700;color:var(--white)}
-  h1.hero-title{font-size:clamp(48px,7.5vw,112px);font-weight:700;max-width:900px;margin-bottom:24px;letter-spacing:-.015em;line-height:.9;color:var(--white);position:relative;background:linear-gradient(180deg,#ffffff 0%,#b9c9e0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 0 rgba(0,0,0,.25),0 8px 32px rgba(0,0,0,.45);word-wrap:break-word;overflow-wrap:break-word}
+  h1.hero-title{font-size:clamp(48px,7.5vw,112px);font-weight:700;max-width:900px;margin-bottom:24px;letter-spacing:-.015em;line-height:.9;position:relative;word-wrap:break-word;overflow-wrap:break-word;
+    background:linear-gradient(180deg,
+      #ffffff 0%,
+      #f4f8fc 18%,
+      #e7edf5 32%,
+      #ffffff 48%,
+      #c9d4e3 68%,
+      #9aa7b9 90%,
+      #7a8899 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 4px 14px rgba(0,0,0,.5)) drop-shadow(0 1px 0 rgba(255,255,255,.2));
+  }
+  h1.hero-title::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.5) 45%,rgba(255,255,255,.9) 50%,rgba(255,255,255,.5) 55%,transparent 70%);background-size:220% 100%;background-position:120% 0;-webkit-mask:linear-gradient(180deg,#000 0%,#000 100%);mix-blend-mode:screen;pointer-events:none;opacity:.0}
+  /* bolts on the corners of the hero title container */
+  .hero-title-wrap{position:relative;display:inline-block;padding:18px 14px 10px}
+  .hero-title-wrap::before,.hero-title-wrap::after{content:"";position:absolute;width:10px;height:10px;border:2px solid var(--accent);background:#0D2A52;box-shadow:0 0 10px rgba(243,112,33,.6),inset 0 0 3px rgba(0,0,0,.6);border-radius:2px}
+  .hero-title-wrap::before{top:0;left:0}
+  .hero-title-wrap::after{top:0;right:0}
+  .hero-title-wrap > .corners-bottom::before,.hero-title-wrap > .corners-bottom::after{content:"";position:absolute;width:10px;height:10px;border:2px solid var(--accent);background:#0D2A52;box-shadow:0 0 10px rgba(243,112,33,.6),inset 0 0 3px rgba(0,0,0,.6);border-radius:2px;bottom:0}
+  .hero-title-wrap > .corners-bottom::before{left:0}
+  .hero-title-wrap > .corners-bottom::after{right:0}
   h1.hero-title em{font-style:normal;position:relative;background:linear-gradient(180deg,#ffb77a 0%,var(--accent) 55%,#c94e0f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
-  h1.hero-title .small{display:block;font-size:.5em;font-weight:500;color:#e8edf4;margin-top:18px;letter-spacing:.01em;-webkit-text-fill-color:#e8edf4;background:none;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-subtitle{display:block;font-family:'Oswald',sans-serif;font-size:clamp(18px,1.6vw,24px);font-weight:500;color:#e8edf4;margin:20px 0 0;letter-spacing:.03em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.6);max-width:780px}
   .hero p.lead{font-size:19px;max-width:580px;color:var(--body);margin-bottom:44px;line-height:1.7}
   .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
 
@@ -240,6 +260,10 @@
   #leader .leader-photo{box-shadow:0 50px 100px rgba(13,42,82,.25),0 0 0 1px rgba(13,42,82,.08)}
   #leader::before{content:"";position:absolute;top:-1px;left:0;right:0;height:6px;background:repeating-linear-gradient(135deg,rgba(243,112,33,.9) 0 8px,#1a2134 8px 16px)}
   #leader::after{content:"";position:absolute;bottom:0;left:0;right:0;height:6px;background:repeating-linear-gradient(135deg,rgba(243,112,33,.9) 0 8px,#1a2134 8px 16px)}
+  #leader .chapter{margin-bottom:48px}
+  #leader .chapter-num{font-size:clamp(140px,16vw,240px);top:-40px}
+  #leader .chapter h2{font-size:clamp(36px,4vw,56px)}
+  #leader .chapter-lede{display:none}
   .testimonials{background:var(--d2)}
 
   /* ======== SERVICES — HORIZONTAL CASCADE ROWS ======== */
@@ -302,19 +326,20 @@
   .pillar h5{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;text-transform:uppercase;margin-bottom:10px;color:var(--white);letter-spacing:.005em}
   .pillar p{color:var(--body);font-size:14.5px;line-height:1.65}
 
-  /* ======== LEADERSHIP ======== */
-  .leader-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:center}
-  .leader-photo-wrap{position:relative;max-width:440px}
+  /* ======== LEADERSHIP — compact ======== */
+  #leader{padding:96px 0}
+  .leader-grid{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center;max-width:960px;margin:0 auto}
+  .leader-photo-wrap{position:relative;max-width:280px}
   .leader-photo-wrap::before{content:"";position:absolute;top:-24px;left:-24px;right:24px;bottom:24px;background:linear-gradient(135deg,var(--navy),var(--accent));opacity:.5;border-radius:3px;filter:blur(0);z-index:0}
   .leader-photo-wrap::after{content:"";position:absolute;bottom:-32px;right:-32px;width:180px;height:180px;background:radial-gradient(circle,rgba(243,112,33,.3),transparent 70%);filter:blur(40px);z-index:0}
   .leader-photo{position:relative;aspect-ratio:1/1;background:#000;border-radius:3px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);z-index:1}
   .leader-photo img{width:100%;height:100%;object-fit:cover}
   .leader-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,8,15,.8));pointer-events:none}
   .leader-photo .tag{position:absolute;left:24px;bottom:24px;background:var(--accent);color:#fff;padding:10px 16px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;z-index:2}
-  .leader h2{font-size:clamp(36px,4vw,54px);font-weight:600;margin-bottom:12px;letter-spacing:-.005em;color:var(--white)}
-  .leader .role{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:32px}
-  .leader p{font-size:17px;color:var(--body);margin-bottom:22px;max-width:620px;line-height:1.75}
-  .leader .sig{font-family:'Oswald',sans-serif;font-size:22px;font-weight:600;color:var(--white);margin-top:36px;padding-top:24px;border-top:1px solid var(--line);display:inline-block;letter-spacing:.01em}
+  .leader h2{font-size:clamp(28px,3vw,40px);font-weight:600;margin-bottom:6px;letter-spacing:-.005em;color:var(--white)}
+  .leader .role{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
+  .leader p{font-size:14.5px;color:var(--body);margin-bottom:14px;max-width:560px;line-height:1.65}
+  .leader .sig{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;color:var(--white);margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:inline-block;letter-spacing:.05em}
 
   /* ======== CREW BAND ======== */
   .crew-band{padding:0;background:var(--d0)}
@@ -477,7 +502,6 @@
 
 <!-- LEFT VERTICAL RAIL -->
 <aside class="rail-left">
-  <div class="logo-mini"></div>
   <nav class="vnav">
     <a href="#services" data-label="Capabilities"></a>
     <a href="#projects" data-label="Projects"></a>
@@ -547,7 +571,10 @@
   <div class="container hero-inner">
     <div class="hero-text">
       <div class="hero-kicker"><span class="rule"></span><span>Heavy Civil · Structural Concrete · Since 1997</span></div>
-      <h1 class="hero-title">Built for<br/>the <em data-stroke="long haul.">long haul.</em><span class="small">Pellco Construction — Heavy Civil &amp; Public Works, Pacific Northwest.</span></h1>
+      <div class="hero-title-wrap"><span class="corners-bottom"></span>
+        <h1 class="hero-title">Built for<br/>the <em>long haul.</em></h1>
+      </div>
+      <div class="hero-subtitle">Pellco Construction — Heavy Civil &amp; Public Works, Pacific Northwest.</div>
       <p class="lead">A Mukilteo-based, union-signatory general contractor delivering site development, structural concrete, and public infrastructure for school districts, municipalities, and private developers across Washington State.</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary btn-xl arrow">Request a Bid</a>
